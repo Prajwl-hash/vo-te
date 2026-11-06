@@ -1,0 +1,154 @@
+
+@import "tailwindcss";
+
+:root {
+  color-scheme: light;
+
+  /* App palette */
+  --background: #f7f7f3;
+  --foreground: #242820;
+
+  --card: #ffffff;
+  --card-foreground: #242820;
+
+  --popover: #ffffff;
+  --popover-foreground: #242820;
+
+  --primary: #50765d;
+  --primary-foreground: #ffffff;
+
+  --secondary: #e8eee6;
+  --secondary-foreground: #294b35;
+
+  --muted: #eef1eb;
+  --muted-foreground: #687267;
+
+  --accent: #e8eee6;
+  --accent-foreground: #294b35;
+
+  --destructive: #c43d4b;
+  --destructive-foreground: #ffffff;
+
+  --border: #e1e5dc;
+  --input: #d8ded4;
+  --ring: #50765d;
+
+  --radius: 0.875rem;
+
+  /* Existing app typography */
+  --text: #586354;
+  --text-h: #242820;
+  --bg: #f7f7f3;
+  --heading: "Poppins", sans-serif;
+  --sans: system-ui, "Segoe UI", Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    min-height: 100%;
+    font-family: var(--sans);
+    background: var(--background);
+  }
+
+  body {
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  #root {
+    width: 100%;
+    min-height: 100vh;
+    margin: 0 auto;
+    color: var(--foreground);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: var(--text-h);
+    font-family: var(--heading);
+    font-weight: 500;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  button:disabled {
+    cursor: not-allowed;
+  }
+
+  ::selection {
+    background: #dce8dc;
+    color: #243c2a;
+  }
+}
+/* Hide scrollbars while preserving scrolling */
+* {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}

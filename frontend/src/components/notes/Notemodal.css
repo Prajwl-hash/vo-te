@@ -1,0 +1,470 @@
+/* ========================================
+   Modal Overlay
+======================================== */
+
+.note-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(30, 36, 30, 0.45);
+  backdrop-filter: blur(4px);
+}
+
+/* ========================================
+   Modal Container
+======================================== */
+
+.note-modal {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 540px;
+  max-height: 90vh;
+  max-height: 90dvh;
+  overflow-y: auto;
+  padding: 30px;
+  border: 1px solid #e5e8e1;
+  border-radius: 20px;
+  background: #fff;
+  color: #242722;
+  box-shadow: 0 24px 80px rgba(25, 35, 25, 0.2);
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.note-modal::-webkit-scrollbar {
+  display: none;
+}
+
+/* Wider modal for voice recording and upload */
+
+.note-modal.note-modal-voice {
+  width: min(900px, calc(100vw - 32px));
+  max-width: 900px;
+}
+
+/* ========================================
+   Modal Header
+======================================== */
+
+.note-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 26px;
+}
+
+.note-modal-eyebrow {
+  margin: 0 0 8px;
+  color: #52745c;
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 1.5px;
+}
+
+.note-modal-header h2 {
+  margin: 0;
+  color: #242722;
+  font-size: 27px;
+  font-weight: 800;
+  letter-spacing: -0.8px;
+}
+
+.note-modal-description {
+  margin: 9px 0 0;
+  color: #777d75;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.note-modal-close {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #f1f3ee;
+  color: #333a32;
+  font-size: 25px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.note-modal-close:hover:not(:disabled) {
+  background: #e6ebe3;
+}
+
+/* ========================================
+   Typed Note Form
+======================================== */
+
+.typed-note-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.typed-note-form label {
+  margin-top: 8px;
+  color: #333a32;
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.typed-note-form input,
+.typed-note-form textarea {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid #e1e5dd;
+  border-radius: 10px;
+  outline: none;
+  background: #fafbf9;
+  color: #242722;
+  font: inherit;
+  font-size: 14px;
+}
+
+.typed-note-form textarea {
+  min-height: 150px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.typed-note-form input:focus,
+.typed-note-form textarea:focus {
+  border-color: #78977e;
+  box-shadow: 0 0 0 3px rgba(82, 116, 92, 0.1);
+}
+
+/* ========================================
+   Buttons
+======================================== */
+
+.note-modal-primary,
+.note-modal-secondary,
+.note-modal-danger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 17px;
+  border-radius: 10px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 650;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.note-modal-primary {
+  border: 1px solid #52745c;
+  background: #52745c;
+  color: #fff;
+}
+
+.note-modal-primary:hover:not(:disabled) {
+  border-color: #405d48;
+  background: #405d48;
+}
+
+.note-modal-secondary {
+  border: 1px solid #e1e5dd;
+  background: #fff;
+  color: #333a32;
+}
+
+.note-modal-secondary:hover:not(:disabled) {
+  background: #f5f6f3;
+}
+
+.note-modal-danger {
+  border: 1px solid #d9a5a0;
+  background: #fff4f2;
+  color: #a43f35;
+}
+
+.note-modal-danger:hover:not(:disabled) {
+  background: #ffe9e5;
+}
+
+.note-modal-primary:disabled,
+.note-modal-secondary:disabled,
+.note-modal-danger:disabled,
+.note-modal-close:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.note-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+/* ========================================
+   Voice Recorder and Upload Columns
+======================================== */
+
+.voice-note-columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: stretch;
+  gap: 20px;
+}
+
+.voice-panel,
+.upload-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+  padding: 20px;
+  border: 1px solid #e1e5dd;
+  border-radius: 18px;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.voice-panel-label {
+  margin: 0;
+  color: #52745c;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+}
+
+/* ========================================
+   Recording Display
+======================================== */
+
+.recording-display {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 150px;
+  padding: 24px 16px;
+  border: 1px solid #e7ebe4;
+  border-radius: 15px;
+  background: #f8faf6;
+  text-align: center;
+}
+
+.recording-display strong {
+  color: #242722;
+  font-size: 30px;
+  font-variant-numeric: tabular-nums;
+}
+
+.recording-display p {
+  margin: 0;
+  color: #687267;
+  font-size: 13px;
+}
+
+.recording-indicator {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #e5ece3;
+}
+
+.recording-indicator span {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #52745c;
+}
+
+.recording-indicator.active span {
+  background: #c54b40;
+  animation: recording-pulse 1.2s infinite;
+}
+
+/* ========================================
+   Audio Preview
+======================================== */
+
+.audio-preview {
+  min-width: 0;
+  margin-top: 8px;
+}
+
+.audio-preview audio {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* ========================================
+   External Audio Upload
+======================================== */
+
+.upload-panel>* {
+  max-width: 100%;
+}
+
+.upload-panel .external-upload-section {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+
+.external-upload-section {
+  min-width: 0;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #dedfd9;
+}
+
+.external-upload-divider {
+  margin: 0 0 16px;
+  text-align: center;
+  color: #777b73;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.upload-panel [class*="border-dashed"] {
+  box-sizing: border-box;
+  min-width: 0;
+  max-width: 100%;
+  padding: 20px 12px;
+}
+
+.upload-panel audio,
+.upload-panel video {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+}
+
+.external-audio-selected,
+.external-audio-preview {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.external-audio-selected p,
+.external-audio-preview p {
+  margin: 0;
+}
+
+.external-audio-selected button {
+  width: 100%;
+}
+
+.external-audio-preview audio {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Keep the custom file input hidden */
+
+.upload-panel input[type="file"].hidden,
+.upload-panel input[type="file"][aria-hidden="true"] {
+  display: none;
+}
+
+/* ========================================
+   Status Messages
+======================================== */
+
+.note-modal-error,
+.note-modal-success {
+  margin: 6px 0;
+  font-size: 13px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.note-modal-error {
+  color: #b33c32;
+}
+
+.note-modal-success {
+  color: #52745c;
+}
+
+/* ========================================
+   Animations
+======================================== */
+
+@keyframes recording-pulse {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(197, 75, 64, 0.3);
+  }
+
+  50% {
+    box-shadow: 0 0 0 8px rgba(197, 75, 64, 0);
+  }
+}
+
+/* ========================================
+   Responsive Layout
+======================================== */
+
+@media (max-width: 640px) {
+  .note-modal-overlay {
+    padding: 12px;
+  }
+
+  .note-modal,
+  .note-modal.note-modal-voice {
+    width: 100%;
+    max-width: 100%;
+    padding: 20px 16px;
+    border-radius: 16px;
+  }
+
+  .note-modal-header {
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .note-modal-header h2 {
+    font-size: 23px;
+  }
+
+  .voice-note-columns {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .voice-panel,
+  .upload-panel {
+    padding: 16px;
+  }
+
+  .recording-display {
+    min-height: 120px;
+    padding: 18px 12px;
+  }
+
+  .note-modal-actions {
+    flex-direction: column-reverse;
+  }
+
+  .note-modal-actions button {
+    width: 100%;
+  }
+}

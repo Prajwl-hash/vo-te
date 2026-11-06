@@ -1,0 +1,272 @@
+.dashboard {
+    min-height: 100vh;
+    padding: 32px clamp(20px, 5vw, 72px) 60px;
+    background: #f5f5f2;
+    color: #242722;
+    font-family: "Prata", serif;
+    font-weight: 400;
+    font-style: normal;
+
+
+}
+
+.dashboard-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    padding-bottom: 28px;
+    border-bottom: 1px solid #e0e2da;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: inherit;
+    font-size: 23px;
+    font-weight: 750;
+    text-decoration: none;
+}
+
+.brand-icon {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    background: #52745c;
+    color: white;
+}
+
+.add-button {
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: 12px;
+    background: #52745c;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+    transition: background 160ms ease, transform 160ms ease;
+}
+
+.add-button:hover {
+    background: #405e49;
+}
+
+.add-button:active {
+    transform: scale(0.96);
+}
+
+.add-button:focus-visible,
+.create-menu button:focus-visible {
+    outline: 3px solid #8ca791;
+    outline-offset: 3px;
+}
+
+.create-menu {
+    position: absolute;
+    z-index: 5;
+    top: 54px;
+    right: 0;
+    width: min(290px, calc(100vw - 40px));
+    padding: 8px;
+    border: 1px solid #e0e2da;
+    border-radius: 16px;
+    background: white;
+    box-shadow: 0 12px 32px rgb(36 39 34 / 10%);
+}
+
+.create-menu button {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 10px;
+    border: none;
+    border-radius: 10px;
+    background: transparent;
+    color: #242722;
+    text-align: left;
+    cursor: pointer;
+}
+
+.create-menu button:hover {
+    background: #f1f4ef;
+}
+
+.create-menu button>span:first-child {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: #eaf0e8;
+    color: #52745c;
+    font-size: 21px;
+}
+
+.create-menu button span:last-child {
+    display: grid;
+    gap: 4px;
+}
+
+.create-menu small {
+    color: #74796f;
+    font-size: 12px;
+}
+
+.dashboard-heading {
+    padding: 44px 0 30px;
+}
+
+.eyebrow {
+    color: #52745c;
+    font-size: 11px;
+    font-weight: 750;
+    letter-spacing: 0.12em;
+}
+
+.dashboard-heading h1 {
+    margin: 12px 0 8px;
+    font-size: clamp(32px, 5vw, 46px);
+    letter-spacing: -0.04em;
+}
+
+.dashboard-heading>p:last-child {
+    color: #74796f;
+}
+
+.notes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+    gap: 18px;
+}
+
+.note-card {
+    min-width: 0;
+    padding: 22px;
+    border: 1px solid #e0e2da;
+    border-radius: 16px;
+    background: #fff;
+    transition: border-color 160ms ease, transform 160ms ease;
+}
+
+.note-card:hover {
+    transform: translateY(-2px);
+    border-color: #b5c4b4;
+}
+
+.note-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 22px;
+}
+
+.note-type-icon {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: #eaf0e8;
+    color: #52745c;
+    font-size: 21px;
+}
+
+.note-type {
+    color: #52745c;
+    font-size: 12px;
+    font-weight: 650;
+}
+
+.note-card h2 {
+    overflow-wrap: anywhere;
+    margin: 0 0 10px;
+    font-size: 18px;
+}
+
+.note-content {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+    overflow-wrap: anywhere;
+    color: #74796f;
+    font-size: 14px;
+    line-height: 1.7;
+    white-space: pre-wrap;
+}
+
+.note-card time {
+    display: block;
+    margin-top: 20px;
+    color: #898e85;
+    font-size: 12px;
+}
+
+.empty-state {
+    padding: 70px 20px;
+    border: 1px dashed #cfd5ca;
+    border-radius: 18px;
+    text-align: center;
+}
+
+.empty-icon {
+    color: #52745c;
+    font-size: 36px;
+}
+
+.empty-state p,
+.dashboard-error {
+    color: #74796f;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .add-button,
+    .note-card {
+        transition: none;
+    }
+
+    .note-card:hover,
+    .add-button:active {
+        transform: none;
+    }
+}
+
+@keyframes noteEnter {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.note-card {
+  animation: noteEnter 500ms ease-out both;
+}
+
+.note-card:nth-child(1) {
+  animation-delay: 60ms;
+}
+
+/* .note-card:nth-child(3) {
+  animation-delay: 120ms;
+}
+
+.note-card:nth-child(4) {
+  animation-delay: 180ms;
+} */
+
+@media (prefers-reduced-motion: reduce) {
+  .note-card {
+    animation: none;
+  }
+}
